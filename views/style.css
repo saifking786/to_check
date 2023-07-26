@@ -1,0 +1,19 @@
+
+body {
+    margin:10px;
+    background-image:url(https://media.npr.org/assets/img/2022/12/22/lk_harlan_to-do-list_final_slide-6aaf506ab59a595f8f3494bdcc51b1a98ab40789.jpg);
+    background-repeat: no-repeat;
+  background-size: cover;
+}
+.container{
+    border-radius: 9px;
+    margin-top: 50px;  
+    font-size:20px;
+    opacity: 0.9;
+}
+.con{
+    margin-top:20px;
+}
+.monk{
+    color:white;
+}

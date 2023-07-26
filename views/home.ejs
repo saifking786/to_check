@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<!-- adding bootstrap ,add font awesome in head tag -->
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <!-- head of the ejs template -->
+    <h1 align="center" class="monk"><i class="fa fa-file-image-o" style="font-size:54px ;margin:10px"></i>My Todo App !</h1>
+<!-- container containing input to the to do list ,here you choose what you want to do on which day -->
+    <div class="container">
+    <form action="/create-task" method="POST">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Add Task</th>
+              <th>Category</th>
+              <th>Date</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="text" name="description" placeholder="What do want to do." required></input></td>
+              <td><select name="category" required>
+                <option>Personal</option>
+                <option>Work</option>
+                <option>School</option>
+                <option>Cleaning</option>
+                <option>Other</option>
+              </select></td>
+              <td><input type="date" name="date" required></input></td>
+              <th><button style="font-size:20px;border-radius:9px;background-color: green;color:white"><i class="fa-regular fa-address-book"></i> Add Task</button></th>
+              <!-- <th><input type="submit" class="btn btn-success" id="add" value="Add Task"></input></th> -->
+            </tr>      
+          </tbody>
+        </table>
+        </form>
+        <br>
+        <br>
+        <!-- here we add the todo list and we can also delete from here -->
+        <div class="con">
+            <form action="/delete-task" method="GET">
+                <table class="table">
+                  <thead>
+                    <tr >
+                      <th>Select</th>
+                      <th>Task</th>
+                      <th>Category</th>
+                      <th>Due Date</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <% for(let i of Task){%>
+              <tr>
+                <td><input type="checkbox" name="<%=i._id %>"></td>
+                <td><p id="task-description"><%=i.description %></p></td>
+                <td><p id="task-category"><%=i.category %></p></td>
+                <td><p id="due-date"><%=i.date %></p></td>
+                <td></td>
+              </tr>
+                  <%}%>
+                </table>
+                <div align="center"><button style="font-size:20px;border-radius:9px;background-color:red;color:white"><i class="fa-solid fa-trash"></i> Delete Task</button></div>
+                </form>  
+        </div>
+      </div>
+      <!-- javascript file for bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  </body>
+</html>
